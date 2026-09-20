@@ -14,11 +14,7 @@ db.sqlite3
 staticfiles/
 media/
 
-# ML artifacts (large binaries)
-ml/*.joblib
-ml/*.pkl
-*.pkl
-*.pkl
+
 
 # Node / frontend
 node_modules/
