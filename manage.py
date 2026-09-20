@@ -4,8 +4,34 @@ import os
 import sys
 
 
+def _force_utf8_stdio():
+    """Windows consoles default to cp1252 — force UTF-8 so '₹' and friends
+    never crash email/report printing (Django console email backend)."""
+    if sys.platform == "win32":
+        import io
+
+        for name in ("stdout", "stderr"):
+            stream = getattr(sys, name)
+            if (
+                stream is not None
+                and hasattr(stream, "buffer")
+                and getattr(stream, "encoding", "").lower() not in ("utf-8", "utf8")
+            ):
+                setattr(
+                    sys,
+                    name,
+                    io.TextIOWrapper(
+                        stream.buffer,
+                        encoding="utf-8",
+                        errors="replace",
+                        line_buffering=True,
+                    ),
+                )
+
+
 def main():
     """Run administrative tasks."""
+    _force_utf8_stdio()
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myproject.settings")
     try:
         from django.core.management import execute_from_command_line

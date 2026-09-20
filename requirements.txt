@@ -1,0 +1,12 @@
+Django==6.1.1
+asgiref==3.12.1
+sqlparse==0.6.0
+tzdata==2026.4
+djangorestframework
+pandas
+scikit-learn
+xgboost
+joblib
+reportlab
+psycopg[binary]
+python-dotenv

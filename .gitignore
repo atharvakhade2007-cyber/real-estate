@@ -1,0 +1,32 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtualenv
+.venv/
+venv/
+
+# Secrets — NEVER commit
+.env
+
+# Django
+db.sqlite3
+staticfiles/
+media/
+
+# ML artifacts (large binaries)
+ml/*.joblib
+ml/*.pkl
+*.pkl
+*.pkl
+
+# Node / frontend
+node_modules/
+frontend/dist/
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
